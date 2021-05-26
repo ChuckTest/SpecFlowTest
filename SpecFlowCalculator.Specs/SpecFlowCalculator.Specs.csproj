@@ -28,4 +28,8 @@
     <Folder Include="Hooks\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SpecFlowCalculator\SpecFlowCalculator.csproj" />
+  </ItemGroup>
+
 </Project>
