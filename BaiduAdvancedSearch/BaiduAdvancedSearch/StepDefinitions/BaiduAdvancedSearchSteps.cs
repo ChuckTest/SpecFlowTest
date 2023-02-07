@@ -1,21 +1,37 @@
+using BoDi;
 using System;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SpecFlowProject1.StepDefinitions
 {
     [Binding]
     public class BaiduAdvancedSearchSteps
     {
+        private IWebDriver driver;
+
+        [BeforeFeature]
+        public static async Task BeforeFeature(IObjectContainer container)
+        {
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--headless");
+            options.AddArgument("--disable-gpu");
+            IWebDriver driver = new ChromeDriver(options);
+        }
+
         [Given(@"打开百度首页")]
         public void Given打开百度首页()
         {
-            throw new PendingStepException();
+            driver.Navigate().GoToUrl("https://www.baidu.com");
         }
 
         [When(@"鼠标悬停在“设置”按钮")]
         public void When鼠标悬停在设置按钮()
         {
-            throw new PendingStepException();
+            IWebElement element = driver.FindElement(By.XPath("//*[@name='tj_settingicon' and @class='pf']"));
+            element.Click();
         }
 
         [When(@"点击设置菜单上的“高级搜索“按钮")]
