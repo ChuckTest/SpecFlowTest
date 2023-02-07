@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlowProject1.Features
+namespace BaiduAdvancedSearch.Features
 {
     using TechTalk.SpecFlow;
     using System;
