@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
 using static System.Net.Mime.MediaTypeNames;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 
 namespace SpecFlowProject1.StepDefinitions
 {
@@ -43,6 +44,8 @@ namespace SpecFlowProject1.StepDefinitions
         {
             IWebElement element = driver.FindElement(By.XPath("//*[contains(text(), '高级搜索')]"));
             element.Click();
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IWebElement popupElement = wait.Until(c=>c.FindElement(By.CssSelector(".bdlayer.s-isindex-wrap.new-pmd.pfpanel")));
         }
 
         [Then(@"弹出高级搜索页面")]
