@@ -17,7 +17,7 @@ namespace SpecFlowProject1.StepDefinitions
         public static async Task BeforeFeature(IObjectContainer container)
         {
             ChromeOptions options = new ChromeOptions();
-            options.AddArgument("--headless");
+            //options.AddArgument("--headless");
             options.AddArgument("--disable-gpu");
             driver = new ChromeDriver(options);
         }
@@ -31,7 +31,9 @@ namespace SpecFlowProject1.StepDefinitions
         [When(@"鼠标悬停在“设置”按钮")]
         public void When鼠标悬停在设置按钮()
         {
-            IWebElement element = driver.FindElement(By.XPath("//*[@name='tj_settingicon' and @class='pf']"));
+            var element = driver.FindElement(By.Id("s-usersetting-top"));
+            var text = element.Text;
+            Console.WriteLine(text);
             Actions action = new Actions(driver);
             action.MoveToElement(element).Build().Perform();
         }
