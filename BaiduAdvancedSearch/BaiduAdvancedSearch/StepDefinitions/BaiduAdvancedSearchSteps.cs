@@ -57,7 +57,7 @@ namespace SpecFlowProject1.StepDefinitions
         [Given(@"输入关键词""([^""]*)""")]
         public void Given输入关键词(string p0)
         {
-            IWebElement element = driver.FindElement(By.CssSelector("input[name='q3'][class='c-input adv-q-input switch-input']"));
+            IWebElement element = driver.FindElement(By.Id("adv_keyword"));
             element.SendKeys("人生若只如初见");
         }
 
@@ -66,12 +66,20 @@ namespace SpecFlowProject1.StepDefinitions
         {
             IWebElement element = driver.FindElement(By.CssSelector("input.advanced-search-btn.c-btn.c-btn-primary.switch-button"));
             element.Click();
+            Thread.Sleep(2000);
         }
 
         [Then(@"搜索框显示关键词""([^""]*)""")]
         public void Then搜索框显示关键词(string p0)
         {
             //throw new PendingStepException();
+        }
+
+        [AfterFeature]
+        public static void TearDown()
+        {
+            Thread.Sleep(1000);
+            driver.Quit();
         }
     }
 }
